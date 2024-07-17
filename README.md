@@ -35,10 +35,11 @@ git rebase re-writes the history
 
   - These public webpages thar are hosted and published via GitHub.
   - These are static webpages means just HTML/CSS/JS and does not support server-side code.
-  - helpful for creating portfolio websites or documentation websites for your repositories.
+  - Helpful for creating portfolio websites or documentation websites for your repositories.
 
-  - `<gh-username>.github.io`- <u> user sites </u>: allowed one per GitHub account
-  - `<gh-username>.github.io/repo-name`- <u> project sites </u>:
+  - `<gh-username>.github.io`- <u> user sites </u>: allowed one per GitHub account. Ex: saurabhssahu.github.io
+  - `<gh-username>.github.io/repo-name`- <u> project sites </u>: https://saurabhssahu.github.io/git/ <br>
+    **NOTE**: Enable GitHub Pages properly through Settings by routing to the correct directory where the HTML, CSS, and JS code reside.
 
 ---
 
