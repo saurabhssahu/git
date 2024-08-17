@@ -7,11 +7,11 @@ Courtesy: **The Git & GitHub Bootcamp** - _Colt Steele_
 ### **Notes**
 
 - `HEAD` refers to a branch reference and not a commit and the branch reference points to a commit
+   - In detached HEAD, it refers to a commit hash
 
-  - In detached HEAD, it refers to a commit hash
-
-- [gitignore.io](https://www.toptal.com/developers/gitignore/) - it provides a general git ignore file for whatever
-  programing language we choose
+- [gitignore.io](https://www.toptal.com/developers/gitignore/) - it provides a general git ignore file for whatever programing language we choose
+- `git rm -r --cached .`- removes all tracked files from the staging area without deleting them from the local 
+  filesystem. Useful when we want to reflect the newly added gitignore or made some changes in it.
 
 - #### **Rewriting History** - to delete the previous commit
 
@@ -20,16 +20,21 @@ Courtesy: **The Git & GitHub Bootcamp** - _Colt Steele_
 
 - #### **Travelling in time**
 
-- `git checkout <commit_hash>/ HEAD~1/2/3`- moves in detached HEAD state
-- `git switch <branch_name> OR git switch`- will re-attach the HEAD
+  - `git checkout <commit_hash>/ HEAD~1/2/3`- moves in detached HEAD state
+  - `git switch <branch_name>` or `git switch`- will re-attach the HEAD
 
 - #### **git rebase vs git merge**
 
-git merge preserves the history
-git rebase re-writes the history
+  - git merge preserves the history
+  - git rebase re-writes the history
+  - `git merge <branch_name>`- merge `<branch_name>` into whatever branch you are in
+  - `git rebase -i HEAD~4` - interactive rebase a series of commits onto the HEAD(upto 4 commits) in the same branch
 
-- `git merge <branch_name>`- merge `<branch_name>` into whatever branch you are in
-- `git rebase -i HEAD~4` :- interactive rebase a series of commits onto the HEAD in the same branch
+- #### **git clean** - to remove untracked files
+
+  - `git clean -n`- to do a dry run
+  - `git clean -d`- to clean untracked directories
+  - `git clean -f`- to force clean
 
 - #### [**GitHub pages**](https://pages.github.com/)
 
@@ -50,9 +55,10 @@ git rebase re-writes the history
 - `git config --global user.name`
 - `git config user.name`- at the root level of project to override the default settings
 - `git config --global user.email`
-- `git config --local user.name` :- for local git config (within a repository)
+- `git config --local user.name`- for local git config (within a repository)
 - `git config --global core.editor "code --wait"`- to set VS Code as default editor
-- `git config --global alias.s status` :- setting alias for git status. After configuring `git s` will be equivalent
+- `git config --global core.excludesfile [file]`- to store global ignore file
+- `git config --global alias.s status`- setting alias for git status. After configuring `git s` will be equivalent
   to `git status`
 
 Reference to [git aliases](https://github.com/GitAlias/gitalias) <br>
@@ -68,6 +74,7 @@ Some common aliases
 #### **git remote**
 
 - `git remote add <remote_name> <url>`- standard name is origin, or we can give upstream
+- `git remote set-url origin <new-url>`- to change the remote url
 - `git remote rename <old> <new>`- to rename remote
 - `git remote remove <name>`- to remove remote
 
@@ -95,6 +102,7 @@ Some common aliases
 - To create new branches:
   - `git checkout -b <branch_name>`
   - `git switch -c <branch_name>`
+- `git checkout -` or `git switch -`-to go back to the previous branch
 - `git branch`- list of local branches
 - `git branch -a`- list of all the branches (local & remote)
 - `git branch -m <new_branch_name>`- to rename a branch
@@ -117,6 +125,7 @@ Some common aliases
 #### **git push**
 
 - `git push origin <local_branch>:<remote_branch>`- to push a different local branch to a different remote branch
+- `git push --all`- to push all the local branches to remote
 
 ---
 
@@ -145,8 +154,9 @@ Some common aliases
 
 - `git restore <file_name>` or `git checkout HEAD <file_name>` or `git checkout -- <file_name>`-after making a lot
   of changes if I want to discard them then I just move back to HEAD
+- `git restore .` or `git checkout .`- to restore the current directory.
 - `git restore --source HEAD~3 <file_name>`- to select different source, by default HEAD is the source
-- `git restore --staged <file_name>`- to unstage a staged file
+- `git restore -S/--staged <file_name>`- to unstage a staged file
 
 #### git reset
 
@@ -206,12 +216,12 @@ Some common aliases
 
 There are 4 types of git objects stored in the objects (/.git/objects) directory in your repository:
 
-1. blob :- binary large object, git uses to store the contents of the files (they don't include the file name)
-2. tree :- are git objects used to store the content of the directories. Trees contains pointers that can refer to blobs and to other trees
-3. commit :- it combines a tree object along with information about the context that led to the current tree. Commit stores :- a reference to a tree, a reference to parent commit, the author, the commiter and the commit message
-4. annotated tag :- it is a pointer to a particular commit
+1. blob - binary large object, git uses to store the contents of the files (they don't include the file name)
+2. tree - are git objects used to store the content of the directories. Trees contains pointers that can refer to blobs and to other trees
+3. commit - it combines a tree object along with information about the context that led to the current tree. Commit stores - a reference to a tree, a reference to parent commit, the author, the commiter and the commit message
+4. annotated tag - it is a pointer to a particular commit
 
-> ![img.png](images/img.png)
+> ![img.png](images/git-objects.png)
 >
 > - A `annotated tag` points to a particular `commit`.
 > - A `commit` points to a `tree`.
