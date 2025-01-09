@@ -18,6 +18,11 @@ Courtesy: **The Git & GitHub Bootcamp** - _Colt Steele_
   - `git reset --hard HEAD~1`
   - `git push origin HEAD --force`
 
+- #### **Rebasing Parents** - to change the parent branch
+
+  - `git rebase --onto <new-parent> <old-parent> <branch>`
+  - `git push origin HEAD --force`
+
 - #### **Travelling in time**
 
   - `git checkout <commit_hash>/ HEAD~1/2/3`- moves in detached HEAD state
