@@ -18,6 +18,15 @@ Courtesy: **The Git & GitHub Bootcamp** - _Colt Steele_
   - `git reset --hard HEAD~1`
   - `git push origin HEAD --force`
 
+- #### **Renaming Branches** - to rename branch in local & remote
+
+  - Suppose old_name=`feature/old`, new_name=`feature/new`, remote=`origin`
+  - `git branch -m feature/old feature/new`
+  - `git push origin --delete feature/old`
+  - `git push origin feature/new`
+  - `git branch --unset-upstream`
+  - `git branch --set-upstream-to=origin/feature/new feature/new`
+
 - #### **Rebasing Parents** - to change the parent branch
 
   - `git rebase --onto <new-parent> <old-parent> <branch>`
